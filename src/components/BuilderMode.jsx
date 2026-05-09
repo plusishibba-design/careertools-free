@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../LanguageContext';
 import ResumeDocument from './ResumeDocument';
 
@@ -84,6 +84,7 @@ function BuilderMode() {
   const { t } = useLanguage();
   const [resume, setResume] = useState(loadResume);
   const [template, setTemplate] = useState(loadTemplate);
+  const [pageCount, setPageCount] = useState(1);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(resume));
@@ -92,6 +93,8 @@ function BuilderMode() {
   useEffect(() => {
     localStorage.setItem(TEMPLATE_KEY, template);
   }, [template]);
+
+  const handlePageCount = useCallback((n) => setPageCount(n), []);
 
   const updatePersonal = (key, value) => {
     setResume((r) => ({ ...r, personal: { ...r.personal, [key]: value } }));
@@ -213,7 +216,19 @@ function BuilderMode() {
             </button>
           </div>
         </div>
-        <p className="saved-note">{t('builder.savedNote')}</p>
+        <div className="builder-meta-row">
+          <p className="saved-note">{t('builder.savedNote')}</p>
+          <p className={`page-count-note ${pageCount > 1 ? 'is-overflow' : ''}`}>
+            {pageCount === 1
+              ? t('builder.pageCountSingle')
+              : t('builder.pageCountMulti').replace('{0}', String(pageCount))}
+          </p>
+        </div>
+        {pageCount > 1 && template !== 'compact' && (
+          <p className="overflow-hint">
+            {t('builder.overflowHint')}
+          </p>
+        )}
 
         {/* Personal */}
         <FieldSet title={t('builder.sectionPersonal')}>
@@ -326,8 +341,13 @@ function BuilderMode() {
 
       {/* RIGHT: live preview */}
       <div className="builder-preview-wrap">
-        <div className="builder-preview-inner">
-          <ResumeDocument resume={resume} template={template} t={t} />
+        <div className="builder-preview-inner" data-page-count={pageCount}>
+          <ResumeDocument
+            resume={resume}
+            template={template}
+            t={t}
+            onPageCount={handlePageCount}
+          />
         </div>
       </div>
     </div>

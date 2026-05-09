@@ -55,6 +55,9 @@ const translations = {
     'builder.printBtn': 'Save as PDF',
     'builder.resetBtn': 'Reset to sample',
     'builder.savedNote': 'Auto-saved to your browser. Refresh-safe.',
+    'builder.pageCountSingle': '1 page · fits on one A4',
+    'builder.pageCountMulti': '{0} pages · A4',
+    'builder.overflowHint': 'Tip: switch to "Compact" to fit on a single page, or trim a bullet or two.',
 
     'builder.sectionPersonal': 'Personal',
     'builder.fieldName': 'Full name',
@@ -232,6 +235,9 @@ const translations = {
     'builder.printBtn': 'PDFに保存',
     'builder.resetBtn': 'サンプルに戻す',
     'builder.savedNote': 'ブラウザに自動保存中。リロードしても残ります。',
+    'builder.pageCountSingle': '1ページ · A4 1枚に収まります',
+    'builder.pageCountMulti': '{0}ページ · A4',
+    'builder.overflowHint': 'ヒント: 「コンパクト」テンプレートに切り替えるか、職務経歴の bullet を1〜2個削ると1枚に収まりやすくなります。',
 
     'builder.sectionPersonal': '基本情報',
     'builder.fieldName': '氏名',

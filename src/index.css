@@ -1286,7 +1286,41 @@ a:hover {
   font-size: 0.85rem;
   color: var(--color-ink-soft);
   margin: 0;
-  padding-left: 0.5rem;
+}
+
+.builder-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: 0 0.25rem;
+}
+
+.page-count-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+.page-count-note.is-overflow {
+  color: var(--color-clay-deep);
+  font-weight: 500;
+}
+
+.overflow-hint {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-clay-deep);
+  background: rgba(216, 149, 106, 0.08);
+  border-left: 2px solid var(--color-clay-deep);
+  padding: 0.6rem 0.85rem;
+  margin: 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .builder-fieldset {
@@ -1417,6 +1451,39 @@ a:hover {
    Resume Document — A4 page rendering
    ======================================================================== */
 
+/* Wrapper carries the A4 page-break visualizer overlay */
+.resume-doc-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+}
+
+/* JS-driven page break lines — one per A4 boundary when content overflows */
+.resume-page-break-line {
+  position: absolute;
+  left: -3mm;
+  right: -3mm;
+  height: 0;
+  border-top: 1px dashed var(--color-clay-deep);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.7;
+}
+
+.page-break-label {
+  position: absolute;
+  top: -0.65rem;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-clay-deep);
+  background: var(--color-paper-soft);
+  padding: 0 0.4rem;
+}
+
 .resume-doc {
   background: #ffffff;
   color: #1a1614;
@@ -1424,12 +1491,13 @@ a:hover {
   font-size: 10.5pt;
   line-height: 1.45;
   width: 100%;
-  max-width: 210mm;
   min-height: 297mm;
   padding: 16mm 18mm;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(26, 22, 20, 0.12);
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 .resume-doc h1,
@@ -1640,7 +1708,8 @@ a:hover {
   .app-footer,
   .builder-form,
   .builder-toolbar,
-  .saved-note {
+  .saved-note,
+  .resume-page-break-line {
     display: none !important;
   }
 
