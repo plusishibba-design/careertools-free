@@ -87,6 +87,7 @@ function BuilderMode() {
   const [pageCount, setPageCount] = useState(1);
   const [showResetModal, setShowResetModal] = useState(false);
   const [exportingDocx, setExportingDocx] = useState(false);
+  const [exportingPdf, setExportingPdf] = useState(false);
 
   // Draft name (from index)
   const [draftName, setDraftName] = useState(() => {
@@ -194,13 +195,34 @@ function BuilderMode() {
 
   const print = () => window.print();
 
+  const safeFilenameStem = () =>
+    draftName.replace(/[^a-zA-Z0-9 _-]/g, '').trim() || 'resume';
+
+  const exportPdf = async () => {
+    if (exportingPdf) return;
+    setExportingPdf(true);
+    try {
+      const { exportToPdf } = await import('../lib/exportPdf');
+      const element = document.querySelector('.resume-doc');
+      await exportToPdf({
+        element,
+        filename: `${safeFilenameStem()}.pdf`,
+        pageSize,
+      });
+    } catch (err) {
+      console.error('PDF export failed:', err);
+      alert(t('builder.pdfFailed'));
+    } finally {
+      setExportingPdf(false);
+    }
+  };
+
   const exportDocx = async () => {
     if (exportingDocx) return;
     setExportingDocx(true);
     try {
       const { exportToDocx } = await import('../lib/exportDocx');
-      const filename = `${draftName.replace(/[^a-zA-Z0-9 _-]/g, '').trim() || 'resume'}.docx`;
-      await exportToDocx(resume, t, filename);
+      await exportToDocx(resume, t, `${safeFilenameStem()}.docx`);
     } catch (err) {
       console.error('DOCX export failed:', err);
       alert(t('builder.docxFailed'));
@@ -554,11 +576,16 @@ function BuilderMode() {
               {t('builder.resetBtn')}
             </button>
             <button type="button" className="cta-ghost"
+              onClick={print}>
+              {t('builder.printBtn')}
+            </button>
+            <button type="button" className="cta-ghost"
               onClick={exportDocx} disabled={exportingDocx}>
               {exportingDocx ? t('builder.exportingDocx') : t('builder.docxBtn')}
             </button>
-            <button type="button" className="cta-primary" onClick={print}>
-              {t('builder.printBtn')}
+            <button type="button" className="cta-ghost"
+              onClick={exportPdf} disabled={exportingPdf}>
+              {exportingPdf ? t('builder.exportingPdf') : t('builder.pdfBtn')}
             </button>
           </div>
         </div>
