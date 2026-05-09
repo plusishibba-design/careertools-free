@@ -1,0 +1,467 @@
+// Resume Tools — flat dot-key i18n
+// Keys missing in a language fall back to English via LanguageContext.t()
+
+const translations = {
+  // ── English (primary, source of truth) ──
+  en: {
+    'app.title': 'Resume Tools',
+    'app.subtitle': 'BROWSER-NATIVE · NO SIGNUP · NO UPLOAD',
+
+    'nav.builder': 'Builder',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+
+    'common.loading': 'Loading…',
+
+    'footer.about': 'About',
+    'footer.privacy': 'Privacy',
+    'footer.terms': 'Terms',
+    'footer.contact': 'Contact',
+    'footer.backToTools': '← Back to home',
+    'footer.tagline': 'Built in Saigon by Studio T. Ishi.',
+    'footer.sister': 'Sister sites:',
+    'footer.sisterImage': 'Image Tools',
+    'footer.sisterPdf': 'PDF Tools',
+    'footer.sisterCalc': 'Calc Tools',
+    'footer.portfolio': 'Studio',
+    'footer.copyright': '2026 Studio T. Ishi',
+
+    // Home
+    'home.eyebrow': 'I — Studio T. Ishi · Resume Tools',
+    'home.titleSerif': 'A resume,',
+    'home.titleEm': 'set in editorial type.',
+    'home.lede':
+      'A free in-browser builder with three Studio T. Ishi house-style templates. Live preview, PDF export through your browser, no signup. Your data never leaves your device.',
+    'home.startCta': 'Start writing →',
+    'home.learnCta': 'About the studio',
+    'home.strength1Title': 'Editorial templates',
+    'home.strength1Body':
+      'Fraunces serif for headings, Inter sans for body. The same typography that quietly says "I take this seriously."',
+    'home.strength2Title': 'Browser-native',
+    'home.strength2Body':
+      'Every keystroke is local. We have no servers that touch your CV — your career history stays on your device.',
+    'home.strength3Title': 'Print, ready',
+    'home.strength3Body':
+      'Export through your browser\'s "Save as PDF". Pixel-identical results across Chrome, Firefox, Safari, Edge.',
+
+    // Builder UI
+    'builder.title': 'Resume Builder',
+    'builder.seoDesc':
+      'Build a clean, editorial resume or CV in your browser. Live preview, PDF export, three Studio T. Ishi house-style templates. No signup.',
+    'builder.templateLabel': 'Template',
+    'builder.templateClassic': 'Classic',
+    'builder.templateModern': 'Modern',
+    'builder.templateCompact': 'Compact',
+    'builder.printBtn': 'Save as PDF',
+    'builder.resetBtn': 'Reset to sample',
+    'builder.savedNote': 'Auto-saved to your browser. Refresh-safe.',
+
+    'builder.sectionPersonal': 'Personal',
+    'builder.fieldName': 'Full name',
+    'builder.fieldHeadline': 'Headline / role',
+    'builder.fieldEmail': 'Email',
+    'builder.fieldPhone': 'Phone',
+    'builder.fieldLocation': 'Location',
+    'builder.fieldWebsite': 'Website',
+    'builder.fieldLinkedin': 'LinkedIn',
+
+    'builder.sectionSummary': 'Summary',
+    'builder.fieldSummary': 'Professional summary (2-4 sentences)',
+
+    'builder.sectionExperience': 'Experience',
+    'builder.addExperience': '+ Add role',
+    'builder.removeExperience': 'Remove',
+    'builder.fieldRole': 'Role / title',
+    'builder.fieldCompany': 'Company',
+    'builder.fieldExpLocation': 'Location',
+    'builder.fieldStart': 'Start (e.g. Jan 2020)',
+    'builder.fieldEnd': 'End (or "Present")',
+    'builder.fieldBullets': 'Bullets (one per line)',
+
+    'builder.sectionEducation': 'Education',
+    'builder.addEducation': '+ Add school',
+    'builder.fieldDegree': 'Degree',
+    'builder.fieldSchool': 'School',
+    'builder.fieldEduLocation': 'Location',
+    'builder.fieldEduStart': 'Start year',
+    'builder.fieldEduEnd': 'End year',
+
+    'builder.sectionSkills': 'Skills',
+    'builder.fieldSkills': 'Skills (comma-separated)',
+
+    'builder.sectionLanguages': 'Languages',
+    'builder.addLanguage': '+ Add language',
+    'builder.fieldLangName': 'Language',
+    'builder.fieldLangLevel': 'Level (e.g. Native, Fluent, B2)',
+
+    // Preview labels (shown in the resume itself)
+    'preview.experience': 'Experience',
+    'preview.education': 'Education',
+    'preview.skills': 'Skills',
+    'preview.languages': 'Languages',
+    'preview.summary': 'Summary',
+
+    // About
+    'about.eyebrow': 'I — About Resume Tools',
+    'about.titleSerif': 'A resume builder',
+    'about.titleEm': 'with no upsell.',
+    'about.lede':
+      'Resume Tools is part of Studio T. Ishi — a small Saigon-based studio building editorial websites and useful tools for the open web.',
+    'about.whyTitle': 'Why we built this',
+    'about.whyP1':
+      'Most "free" resume builders show you a clean preview, then put a paywall in front of the PDF download button. We thought that was an unkind way to treat people during a job search. So we built a builder where everything is genuinely free, including the export.',
+    'about.whyP2':
+      'No signup. No "upgrade to remove watermark." No email-gate. Your data stays in your browser, and the export is your browser\'s native print-to-PDF — identical to what you\'d get from any printer dialog.',
+    'about.principlesEyebrow': 'II — Principles',
+    'about.principlesTitle': 'Four rules we follow',
+    'about.principle1Title': 'Privacy by design',
+    'about.principle1Body':
+      'Your resume content lives in your browser\'s local storage. Nothing is uploaded. We have no database to leak.',
+    'about.principle2Title': 'Editorial typography',
+    'about.principle2Body':
+      'Fraunces serif and Inter sans, combined the way a magazine would set them. A resume is a designed object — it deserves type that respects it.',
+    'about.principle3Title': 'Print-faithful preview',
+    'about.principle3Body':
+      'What you see on screen is what comes out of "Save as PDF." No surprises, no cut-off margins, no font swaps in the export.',
+    'about.principle4Title': 'No upsell',
+    'about.principle4Body':
+      'No premium tier, no email capture, no watermark. The product is the whole product.',
+    'about.howTitle': 'How to use it',
+    'about.howIntro': 'Three short steps and a finished PDF:',
+    'about.how1': 'Pick a template (Classic, Modern, or Compact).',
+    'about.how2': 'Fill in personal info, summary, experience, education, skills.',
+    'about.how3': 'Click "Save as PDF" — the browser print dialog opens, choose "Save as PDF" as the destination.',
+    'about.techTitle': 'How it works under the hood',
+    'about.techP1':
+      'Resume Tools is built on the same stack we use for our editorial client work — but stripped down to a single-page builder:',
+    'about.tech1': 'React 19 with a small custom router (no framework lock-in).',
+    'about.tech2': 'All editing is local — your draft is saved to localStorage so a refresh doesn\'t lose your work.',
+    'about.tech3': 'PDF export uses the browser\'s built-in print engine via @media print CSS — no PDF library bloat.',
+    'about.tech4': 'Five-language interface (English, Japanese, Vietnamese, Indonesian, Chinese).',
+    'about.techP2':
+      'The full source is hosted publicly. Verify, fork, or improve it.',
+    'about.makerTitle': 'The maker',
+    'about.makerP1':
+      'Studio T. Ishi is a one-person studio in Saigon focused on editorial websites for cafés, salons, restaurants, and small businesses across Vietnam — and the occasional public utility like this one.',
+    'about.makerP2':
+      'If you want to see the bigger client portfolio, the studio site is linked in the footer.',
+    'about.freeTitle': 'Why it is free',
+    'about.freeP1':
+      'A small advertising banner pays for the domain and hosting. That is it. No premium plan, no pro tier, no behind-a-paywall feature.',
+    'about.freeP2':
+      'If the ads ever interfere with using the builder, that is our mistake — write to us and we will fix it.',
+    'about.closingEyebrow': 'III — Boundaries',
+    'about.closingTitle': 'What this is not',
+    'about.closingBody':
+      'Not career advice. Not a guarantee that any specific resume will pass any specific ATS or land any specific interview. Resume Tools gives you a clean, editorial resume; the words are up to you.',
+
+    // Contact
+    'contact.eyebrow': 'I — Contact',
+    'contact.titleSerif': 'Talk to',
+    'contact.titleEm': 'the studio.',
+    'contact.lede':
+      'Bug reports, feature ideas, template suggestions, or studio inquiries — all welcome. The fastest path is email.',
+    'contact.directLabel': 'Direct email',
+    'contact.categoriesTitle': 'Pick a category',
+    'contact.categoriesIntro':
+      'These templates open your mail client with a pre-filled subject line so we can route faster.',
+    'contact.cat1Title': 'General inquiry',
+    'contact.cat1Body': 'A general question about Resume Tools, the studio, or how a feature works.',
+    'contact.cat2Title': 'Bug report',
+    'contact.cat2Body': 'Something looked wrong, exported strangely, or a translation looks off. Include browser + steps.',
+    'contact.cat3Title': 'Template request',
+    'contact.cat3Body': 'A resume / CV template style we should add (e.g. academic CV, federal resume, creative portfolio).',
+    'contact.cat4Title': 'Studio / Business',
+    'contact.cat4Body': 'You want to commission a website, a custom template, or a piece of editorial design.',
+    'contact.responseTitle': 'Response time',
+    'contact.responseBody':
+      'Usually within 48 hours during business days (UTC+7, Saigon). Bug reports get priority.',
+    'contact.privacyTitle': 'Email privacy',
+    'contact.privacyBody':
+      'Your email goes only to the studio inbox. We never share it, sell it, or add it to a marketing list.',
+  },
+
+  // ── Japanese ──
+  ja: {
+    'app.title': 'Resume Tools',
+    'app.subtitle': 'ブラウザ完結 · 登録不要 · アップロード不要',
+
+    'nav.builder': 'ビルダー',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+
+    'common.loading': '読み込み中…',
+
+    'footer.about': 'About',
+    'footer.privacy': 'Privacy',
+    'footer.terms': 'Terms',
+    'footer.contact': 'Contact',
+    'footer.backToTools': '← ホームへ',
+    'footer.tagline': 'Saigon の Studio T. Ishi が作りました。',
+    'footer.sister': '姉妹サイト:',
+    'footer.sisterImage': 'Image Tools',
+    'footer.sisterPdf': 'PDF Tools',
+    'footer.sisterCalc': 'Calc Tools',
+    'footer.portfolio': 'Studio',
+    'footer.copyright': '2026 Studio T. Ishi',
+
+    'home.eyebrow': 'I — Studio T. Ishi · Resume Tools',
+    'home.titleSerif': '履歴書を、',
+    'home.titleEm': 'エディトリアル組版で。',
+    'home.lede':
+      '無料のブラウザ完結型ビルダー。Studio T. Ishi 製の3テンプレート、リアルタイムプレビュー、ブラウザ経由のPDF出力。登録不要、データ送信なし。',
+    'home.startCta': '書き始める →',
+    'home.learnCta': '制作者について',
+    'home.strength1Title': 'エディトリアルテンプレート',
+    'home.strength1Body':
+      '見出しに Fraunces セリフ、本文に Inter サンセリフ。雑誌が組むようなタイポグラフィで「真剣に向き合っている」が静かに伝わる。',
+    'home.strength2Title': 'ブラウザ完結',
+    'home.strength2Body':
+      'すべての編集はローカル。あなたの職歴に触れるサーバーは存在しません。',
+    'home.strength3Title': '印刷準拠',
+    'home.strength3Body':
+      'ブラウザの「PDFに保存」で出力。Chrome / Firefox / Safari / Edge で同じ結果。',
+
+    'builder.title': '履歴書ビルダー',
+    'builder.seoDesc':
+      'ブラウザだけで上品なエディトリアル履歴書を作成。リアルタイムプレビュー、PDF出力、3つの Studio T. Ishi テンプレート。登録不要。',
+    'builder.templateLabel': 'テンプレート',
+    'builder.templateClassic': 'クラシック',
+    'builder.templateModern': 'モダン',
+    'builder.templateCompact': 'コンパクト',
+    'builder.printBtn': 'PDFに保存',
+    'builder.resetBtn': 'サンプルに戻す',
+    'builder.savedNote': 'ブラウザに自動保存中。リロードしても残ります。',
+
+    'builder.sectionPersonal': '基本情報',
+    'builder.fieldName': '氏名',
+    'builder.fieldHeadline': '肩書 / 職種',
+    'builder.fieldEmail': 'メール',
+    'builder.fieldPhone': '電話',
+    'builder.fieldLocation': '居住地',
+    'builder.fieldWebsite': 'ウェブサイト',
+    'builder.fieldLinkedin': 'LinkedIn',
+
+    'builder.sectionSummary': 'サマリー',
+    'builder.fieldSummary': '自己PR（2-4文）',
+
+    'builder.sectionExperience': '職歴',
+    'builder.addExperience': '+ 職歴を追加',
+    'builder.removeExperience': '削除',
+    'builder.fieldRole': '役職 / タイトル',
+    'builder.fieldCompany': '会社名',
+    'builder.fieldExpLocation': '勤務地',
+    'builder.fieldStart': '開始（例: 2020年1月）',
+    'builder.fieldEnd': '終了（または「現在」）',
+    'builder.fieldBullets': '実績・業務内容（1行に1つ）',
+
+    'builder.sectionEducation': '学歴',
+    'builder.addEducation': '+ 学歴を追加',
+    'builder.fieldDegree': '学位 / 専攻',
+    'builder.fieldSchool': '学校名',
+    'builder.fieldEduLocation': '所在地',
+    'builder.fieldEduStart': '入学年',
+    'builder.fieldEduEnd': '卒業年',
+
+    'builder.sectionSkills': 'スキル',
+    'builder.fieldSkills': 'スキル（カンマ区切り）',
+
+    'builder.sectionLanguages': '言語',
+    'builder.addLanguage': '+ 言語を追加',
+    'builder.fieldLangName': '言語',
+    'builder.fieldLangLevel': 'レベル（例: ネイティブ、流暢、B2）',
+
+    'preview.experience': '職歴',
+    'preview.education': '学歴',
+    'preview.skills': 'スキル',
+    'preview.languages': '言語',
+    'preview.summary': 'サマリー',
+
+    'about.eyebrow': 'I — About Resume Tools',
+    'about.titleSerif': '営業のない',
+    'about.titleEm': '履歴書ビルダー。',
+    'about.lede':
+      'Resume Tools は Studio T. Ishi の一部です。Saigon を拠点にエディトリアルなWebサイトと公開ツールを作っています。',
+    'about.whyTitle': '作った理由',
+    'about.whyP1':
+      'たいていの「無料」履歴書ビルダーは、綺麗なプレビューを見せてから PDF ダウンロードボタンに有料壁を置きます。求職中の人間にそれは不親切だと感じました。だから本当に全部無料 — エクスポート含めて — のビルダーを作りました。',
+    'about.whyP2':
+      '登録不要。「ウォーターマーク削除に有料アップグレード」もなし。メールゲートもなし。データはあなたのブラウザに残り、エクスポートはブラウザのネイティブPDF印刷 — どんなプリンタダイアログでも同じ結果です。',
+    'about.principlesEyebrow': 'II — 原則',
+    'about.principlesTitle': '私たちが守る4つのルール',
+    'about.principle1Title': 'プライバシー設計',
+    'about.principle1Body':
+      'あなたの履歴書はブラウザの localStorage に残ります。アップロードはありません。漏洩するデータベースもありません。',
+    'about.principle2Title': 'エディトリアルタイポ',
+    'about.principle2Body':
+      'Fraunces セリフと Inter サンセリフを、雑誌の組版のように合わせています。履歴書はデザインされた物体 — それに見合う書体を。',
+    'about.principle3Title': '印刷忠実プレビュー',
+    'about.principle3Body':
+      '画面で見えているものが「PDFに保存」で出力されます。マージン切れ、フォント置換等のサプライズなし。',
+    'about.principle4Title': '営業しない',
+    'about.principle4Body':
+      'プレミアムプランも、メール収集も、ウォーターマークもなし。製品が製品の全部です。',
+    'about.howTitle': '使い方',
+    'about.howIntro': '3ステップでPDF完成:',
+    'about.how1': 'テンプレートを選ぶ（クラシック / モダン / コンパクト）',
+    'about.how2': '基本情報・サマリー・職歴・学歴・スキルを入力',
+    'about.how3': '「PDFに保存」をクリック — ブラウザの印刷ダイアログで「PDFに保存」を選択',
+    'about.techTitle': '裏側の仕組み',
+    'about.techP1':
+      'Resume Tools はクライアント案件と同じスタックで作られていますが、ビルダーエンジンに削ぎ落としています:',
+    'about.tech1': 'React 19 + 自前ルーター（フレームワーク依存なし）',
+    'about.tech2': '編集はすべてローカル。下書きは localStorage に保存されてリロードしても消えません',
+    'about.tech3': 'PDF出力はブラウザの内蔵印刷エンジン + @media print CSS — 重い PDF ライブラリ不使用',
+    'about.tech4': '5言語対応（英語・日本語・ベトナム語・インドネシア語・中国語）',
+    'about.techP2':
+      'ソースコードは公開されています。検証・フォーク・改善もできます。',
+    'about.makerTitle': '制作者',
+    'about.makerP1':
+      'Studio T. Ishi は Saigon の1人スタジオ。ベトナム各地のカフェ・サロン・レストラン・小規模ビジネス向けにエディトリアルなWebサイトを作っています。たまにこういう公開ツールも。',
+    'about.makerP2':
+      'クライアントポートフォリオはフッターのリンクから。',
+    'about.freeTitle': 'なぜ無料なのか',
+    'about.freeP1':
+      '小さな広告がドメイン代とホスティング代を賄っています。それだけ。プレミアムプランも有料機能もありません。',
+    'about.freeP2':
+      '広告がビルダーの使い勝手を損ねていたら、それは私たちの設計ミス。連絡をいただければ修正します。',
+    'about.closingEyebrow': 'III — 境界線',
+    'about.closingTitle': 'このツールがしないこと',
+    'about.closingBody':
+      'これはキャリアアドバイスではありません。特定の履歴書が特定の ATS を通る、または特定の面接に進む、という保証もありません。Resume Tools が提供するのはエディトリアルな履歴書フォーマット。言葉はあなた次第です。',
+
+    'contact.eyebrow': 'I — Contact',
+    'contact.titleSerif': 'スタジオに',
+    'contact.titleEm': 'ご連絡ください。',
+    'contact.lede':
+      'バグ報告・機能提案・テンプレート提案・スタジオへの問い合わせ — 何でも歓迎。最速はメールです。',
+    'contact.directLabel': 'メール',
+    'contact.categoriesTitle': 'カテゴリを選んでください',
+    'contact.categoriesIntro':
+      'メールクライアントに件名が入った状態で開きます。仕分けが速くなります。',
+    'contact.cat1Title': '一般のお問い合わせ',
+    'contact.cat1Body': 'Resume Tools やスタジオ、機能についての質問。',
+    'contact.cat2Title': 'バグ報告',
+    'contact.cat2Body': '表示がおかしい、出力が変、翻訳がおかしい等。ブラウザ・手順を添えてください。',
+    'contact.cat3Title': 'テンプレート提案',
+    'contact.cat3Body': '追加すべきテンプレートスタイル（例: 学術CV、官公庁形式、クリエイティブ等）。',
+    'contact.cat4Title': 'スタジオ・ビジネス',
+    'contact.cat4Body': 'Webサイト、カスタムテンプレート、エディトリアルデザインのご相談。',
+    'contact.responseTitle': '返信時間',
+    'contact.responseBody':
+      '通常48時間以内（営業日, UTC+7 Saigon）。バグ報告は優先対応します。',
+    'contact.privacyTitle': 'メールのプライバシー',
+    'contact.privacyBody':
+      'メールはスタジオの受信箱のみに届きます。共有・販売・マーケティングリスト追加は行いません。',
+  },
+
+  // ── Vietnamese ──
+  vi: {
+    'app.title': 'Resume Tools',
+    'app.subtitle': 'CHẠY TRÊN TRÌNH DUYỆT · KHÔNG ĐĂNG KÝ · KHÔNG TẢI LÊN',
+    'nav.builder': 'Trình tạo',
+    'nav.about': 'Giới thiệu',
+    'nav.contact': 'Liên hệ',
+    'common.loading': 'Đang tải…',
+    'footer.about': 'Giới thiệu',
+    'footer.privacy': 'Quyền riêng tư',
+    'footer.terms': 'Điều khoản',
+    'footer.contact': 'Liên hệ',
+    'footer.backToTools': '← Trang chủ',
+    'footer.tagline': 'Được xây dựng tại Sài Gòn bởi Studio T. Ishi.',
+    'footer.sister': 'Trang chị em:',
+    'footer.copyright': '2026 Studio T. Ishi',
+    'home.titleSerif': 'CV của bạn,',
+    'home.titleEm': 'sắp chữ kiểu tạp chí.',
+    'home.lede':
+      'Trình tạo CV miễn phí trong trình duyệt. Ba mẫu Studio T. Ishi, xem trước trực tiếp, xuất PDF qua trình duyệt. Không đăng ký, không tải lên.',
+    'home.learnCta': 'Về studio',
+    'builder.title': 'Trình tạo CV',
+    'builder.printBtn': 'Lưu PDF',
+    'builder.sectionPersonal': 'Cá nhân',
+    'builder.sectionSummary': 'Tóm tắt',
+    'builder.sectionExperience': 'Kinh nghiệm',
+    'builder.sectionEducation': 'Học vấn',
+    'builder.sectionSkills': 'Kỹ năng',
+    'builder.sectionLanguages': 'Ngôn ngữ',
+    'preview.experience': 'Kinh nghiệm',
+    'preview.education': 'Học vấn',
+    'preview.skills': 'Kỹ năng',
+    'preview.languages': 'Ngôn ngữ',
+    'preview.summary': 'Tóm tắt',
+  },
+
+  // ── Indonesian ──
+  id: {
+    'app.title': 'Resume Tools',
+    'app.subtitle': 'BERJALAN DI BROWSER · TANPA DAFTAR · TANPA UNGGAH',
+    'nav.builder': 'Pembuat',
+    'nav.about': 'Tentang',
+    'nav.contact': 'Kontak',
+    'common.loading': 'Memuat…',
+    'footer.about': 'Tentang',
+    'footer.privacy': 'Privasi',
+    'footer.terms': 'Syarat',
+    'footer.contact': 'Kontak',
+    'footer.backToTools': '← Beranda',
+    'footer.tagline': 'Dibuat di Saigon oleh Studio T. Ishi.',
+    'footer.sister': 'Trang chị em:',
+    'footer.copyright': '2026 Studio T. Ishi',
+    'home.titleSerif': 'Resume Anda,',
+    'home.titleEm': 'dengan tipografi editorial.',
+    'home.lede':
+      'Pembuat resume gratis di browser. Tiga template Studio T. Ishi, pratinjau langsung, ekspor PDF.',
+    'home.learnCta': 'Tentang studio',
+    'builder.title': 'Pembuat Resume',
+    'builder.printBtn': 'Simpan PDF',
+    'builder.sectionPersonal': 'Pribadi',
+    'builder.sectionSummary': 'Ringkasan',
+    'builder.sectionExperience': 'Pengalaman',
+    'builder.sectionEducation': 'Pendidikan',
+    'builder.sectionSkills': 'Keterampilan',
+    'builder.sectionLanguages': 'Bahasa',
+    'preview.experience': 'Pengalaman',
+    'preview.education': 'Pendidikan',
+    'preview.skills': 'Keterampilan',
+    'preview.languages': 'Bahasa',
+    'preview.summary': 'Ringkasan',
+  },
+
+  // ── Chinese (Simplified) ──
+  zh: {
+    'app.title': 'Resume Tools',
+    'app.subtitle': '浏览器原生 · 无需注册 · 无需上传',
+    'nav.builder': '生成器',
+    'nav.about': '关于',
+    'nav.contact': '联系',
+    'common.loading': '加载中…',
+    'footer.about': '关于',
+    'footer.privacy': '隐私',
+    'footer.terms': '条款',
+    'footer.contact': '联系',
+    'footer.backToTools': '← 返回',
+    'footer.tagline': '由 Studio T. Ishi 在西贡构建。',
+    'footer.sister': '姐妹站:',
+    'footer.copyright': '2026 Studio T. Ishi',
+    'home.titleSerif': '简历，',
+    'home.titleEm': '杂志级排版。',
+    'home.lede':
+      '浏览器内免费简历生成器。三套 Studio T. Ishi 模板，实时预览，浏览器导出 PDF。',
+    'home.learnCta': '关于工作室',
+    'builder.title': '简历生成器',
+    'builder.printBtn': '保存为 PDF',
+    'builder.sectionPersonal': '个人',
+    'builder.sectionSummary': '概述',
+    'builder.sectionExperience': '工作经历',
+    'builder.sectionEducation': '教育背景',
+    'builder.sectionSkills': '技能',
+    'builder.sectionLanguages': '语言',
+    'preview.experience': '工作经历',
+    'preview.education': '教育背景',
+    'preview.skills': '技能',
+    'preview.languages': '语言',
+    'preview.summary': '概述',
+  },
+};
+
+export default translations;
