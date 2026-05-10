@@ -76,7 +76,7 @@ export const LETTER_TYPE_META = {
     descKey: 'letter.negotiation.desc',
     icon: '⚖',
     defaults: {
-      subject: 'Re: Offer for [Position]',
+      subject: 'Offer for [Position]',
       greeting: 'Dear [Hiring Manager Name],',
       body:
         'Thank you for the offer to join [Company] as [Position]. I am genuinely excited about the opportunity and the work we discussed.\n\nBefore finalizing, I would like to discuss the compensation package. Based on my [X] years of experience in [field], the value I can bring to [specific outcome], and current market data for similar roles in [location], I would like to request a base salary of [Amount].\n\nI am open to discussing the structure — base, bonus, equity, or signing — to find a package that works for both of us. To be clear: I am committed to joining [Company] and view this as a collaborative conversation.\n\nThank you again for the offer and for your willingness to discuss. I look forward to your thoughts.',
